@@ -26,5 +26,5 @@ public class GreetingController {
     @GetMapping("/param/{name}")
     public String pathData(@PathVariable String name){
         return "Hello "+name+" !!!!" ;
-    }
+ }
 }
