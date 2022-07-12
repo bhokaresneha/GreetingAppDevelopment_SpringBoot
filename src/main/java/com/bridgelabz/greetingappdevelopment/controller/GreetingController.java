@@ -1,35 +1,30 @@
 package com.bridgelabz.greetingappdevelopment.controller;
-import com.bridgelabz.greetingappdevelopment.module.Data;
+import com.bridgelabz.greetingappdevelopment.module.User;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 public class GreetingController {
 
-    @GetMapping("/")
-    public String sayHello(){
-        return "Hello Sneha";
-    }
-    @RequestMapping(value = {"/hi"}, method = RequestMethod.GET)
-    public String sayHelloDifferently() {
-        return "Hello Everyone";
+    //Using RequestBody
+    @GetMapping("/getData")
+    public String getdata(@RequestBody User data){
+        return "Hello "+data.getFirstName()+" "+data.getLastName();
     }
 
-    @RequestMapping(value = {"/query"},method = RequestMethod.GET)
-    public String sayHello(@RequestParam(value = "name") String name){
-        return "Hello " + name + "!";
+    //Using RequestMapping
+    @RequestMapping(value = {"/get"}, method = RequestMethod.GET)
+    public String reqData(){
+        return "Hello RequestMap World";
     }
 
+    //Using RequestMapping And RequestParam
+    @RequestMapping(value = {"/get1"},method = RequestMethod.GET)
+    public String reqData1(@RequestParam String name, @RequestBody User data){
+        return "Hello "+name+" "+data.getLastName();
+    }
+
+    //Using PathVariable
     @GetMapping("/param/{name}")
-    public String sayHelloParam (@PathVariable String name){
-        return "Hello " + name + " Welcome";
-    }
-
-    @PostMapping("/post")
-    public String sayHello (@RequestBody Data user){
-        return "Hello " + user.getFirstName() + " " + user.getLastName () + "!!!";
-    }
-    @PutMapping("/put/{firstName}")
-    public String sayHello(@PathVariable String firstName, @RequestParam(value = "lastName")String lastName){
-        return "Hello "+ firstName + " " + lastName + " !!";
-    }
+    public String pathData(@PathVariable String name){
+        return "Hello "+name+" !!!!" ;
+ }
 }
