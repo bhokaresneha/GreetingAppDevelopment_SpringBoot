@@ -9,7 +9,6 @@ public class GreetingController {
     public String sayHello(){
         return "Hello Sneha";
     }
-
     @RequestMapping(value = {"/hi"}, method = RequestMethod.GET)
     public String sayHelloDifferently() {
         return "Hello Everyone";
