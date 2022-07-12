@@ -1,7 +1,8 @@
 package com.bridgelabz.greetingappdevelopment.controller;
+
 import com.bridgelabz.greetingappdevelopment.module.User;
 import org.springframework.web.bind.annotation.*;
-
+@RestController
 public class GreetingController {
 
     //Using RequestBody
@@ -26,5 +27,6 @@ public class GreetingController {
     @GetMapping("/param/{name}")
     public String pathData(@PathVariable String name){
         return "Hello "+name+" !!!!" ;
+
  }
 }
